@@ -8,4 +8,4 @@
 ![life at work](screenshots/example.gif)
 
 ## With controls!
-![shrunk but high framerate of the controls](screenshots/controls-mid-high.gif)
+![shrunk but high framerate of the controls](screenshots/controls-480-high.gif)
