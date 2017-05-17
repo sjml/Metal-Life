@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		341D1F4C1ECB39CD00D90465 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3420D2751EC755090094C4B1 /* Shaders.metal */; };
+		341D1F4D1ECB39D200D90465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420D2661EC7536B0094C4B1 /* AppDelegate.swift */; };
+		341D1F4E1ECB39D600D90465 /* LifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420D2681EC7536B0094C4B1 /* LifeViewController.swift */; };
+		341D1F4F1ECB39D900D90465 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349DA86A1ECA18F70048C4FD /* Life.swift */; };
+		341D1F501ECB39E500D90465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26C1EC7536B0094C4B1 /* Main.storyboard */; };
+		341D1F511ECB39E700D90465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26A1EC7536B0094C4B1 /* Assets.xcassets */; };
+		341D1F521ECB3A1100D90465 /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B485281ECAB5C200813F90 /* AAPLMathUtilities.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		341D1F3D1ECB39AC00D90465 /* Metal-Life.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metal-Life.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3420D2661EC7536B0094C4B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3420D2681EC7536B0094C4B1 /* LifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeViewController.swift; sourceTree = "<group>"; };
+		3420D26A1EC7536B0094C4B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3420D26D1EC7536B0094C4B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3420D26F1EC7536B0094C4B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3420D2751EC755090094C4B1 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		349DA86A1ECA18F70048C4FD /* Life.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
+		34B485261ECAB5C200813F90 /* Metal-Life-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Metal-Life-Bridging-Header.h"; path = "Metal-Life/Metal-Life-Bridging-Header.h"; sourceTree = "<group>"; };
+		34B485271ECAB5C200813F90 /* AAPLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLMathUtilities.h; path = "../Landscape-Metal/lib/AAPLMathUtilities.h"; sourceTree = "<group>"; };
+		34B485281ECAB5C200813F90 /* AAPLMathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLMathUtilities.m; path = "../Landscape-Metal/lib/AAPLMathUtilities.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		341D1F3A1ECB39AC00D90465 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3420D25A1EC7536B0094C4B1 = {
+			isa = PBXGroup;
+			children = (
+				3420D2651EC7536B0094C4B1 /* Metal-Life */,
+				34B485251ECAB5B700813F90 /* lib */,
+				3420D2641EC7536B0094C4B1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3420D2641EC7536B0094C4B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				341D1F3D1ECB39AC00D90465 /* Metal-Life.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3420D2651EC7536B0094C4B1 /* Metal-Life */ = {
+			isa = PBXGroup;
+			children = (
+				3420D2661EC7536B0094C4B1 /* AppDelegate.swift */,
+				3420D2681EC7536B0094C4B1 /* LifeViewController.swift */,
+				349DA86A1ECA18F70048C4FD /* Life.swift */,
+				3420D2751EC755090094C4B1 /* Shaders.metal */,
+				3420D26C1EC7536B0094C4B1 /* Main.storyboard */,
+				3420D26A1EC7536B0094C4B1 /* Assets.xcassets */,
+				3420D26F1EC7536B0094C4B1 /* Info.plist */,
+			);
+			path = "Metal-Life";
+			sourceTree = "<group>";
+		};
+		34B485251ECAB5B700813F90 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				34B485271ECAB5C200813F90 /* AAPLMathUtilities.h */,
+				34B485281ECAB5C200813F90 /* AAPLMathUtilities.m */,
+				34B485261ECAB5C200813F90 /* Metal-Life-Bridging-Header.h */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		341D1F3C1ECB39AC00D90465 /* Metal-Life */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 341D1F4B1ECB39AD00D90465 /* Build configuration list for PBXNativeTarget "Metal-Life" */;
+			buildPhases = (
+				341D1F391ECB39AC00D90465 /* Sources */,
+				341D1F3A1ECB39AC00D90465 /* Frameworks */,
+				341D1F3B1ECB39AC00D90465 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Metal-Life";
+			productName = "Metal-Life";
+			productReference = 341D1F3D1ECB39AC00D90465 /* Metal-Life.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3420D25B1EC7536B0094C4B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				TargetAttributes = {
+					341D1F3C1ECB39AC00D90465 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = CFJYV723M9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 3420D25E1EC7536B0094C4B1 /* Build configuration list for PBXProject "Metal-Life" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3420D25A1EC7536B0094C4B1;
+			productRefGroup = 3420D2641EC7536B0094C4B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				341D1F3C1ECB39AC00D90465 /* Metal-Life */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		341D1F3B1ECB39AC00D90465 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341D1F501ECB39E500D90465 /* Main.storyboard in Resources */,
+				341D1F511ECB39E700D90465 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		341D1F391ECB39AC00D90465 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341D1F521ECB3A1100D90465 /* AAPLMathUtilities.m in Sources */,
+				341D1F4C1ECB39CD00D90465 /* Shaders.metal in Sources */,
+				341D1F4D1ECB39D200D90465 /* AppDelegate.swift in Sources */,
+				341D1F4E1ECB39D600D90465 /* LifeViewController.swift in Sources */,
+				341D1F4F1ECB39D900D90465 /* Life.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3420D26C1EC7536B0094C4B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3420D26D1EC7536B0094C4B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		341D1F491ECB39AD00D90465 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				INFOPLIST_FILE = "Metal-Life/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shaneliesegang.Metal-Life";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Metal-Life/Metal-Life-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		341D1F4A1ECB39AD00D90465 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				INFOPLIST_FILE = "Metal-Life/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shaneliesegang.Metal-Life";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Metal-Life/Metal-Life-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		3420D2701EC7536B0094C4B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3420D2711EC7536B0094C4B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		341D1F4B1ECB39AD00D90465 /* Build configuration list for PBXNativeTarget "Metal-Life" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				341D1F491ECB39AD00D90465 /* Debug */,
+				341D1F4A1ECB39AD00D90465 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3420D25E1EC7536B0094C4B1 /* Build configuration list for PBXProject "Metal-Life" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3420D2701EC7536B0094C4B1 /* Debug */,
+				3420D2711EC7536B0094C4B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3420D25B1EC7536B0094C4B1 /* Project object */;
+}
