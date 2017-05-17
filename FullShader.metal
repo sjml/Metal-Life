@@ -1,6 +1,6 @@
 // This is the older version of the shaders where all the logic
 //  for calculating the grid and everything also lived here.
-// All the CPU would do was feed this shader a zeroed buffer of
+// All the CPU would do was feed this shader an initial buffer of
 //  unsigned chars and it did the rest. (The CPU would also
 //  check on the buffer every few seconds to see if it had reached
 //  an equilibrium, and restart it if needed. But otherwise,
