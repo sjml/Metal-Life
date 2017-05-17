@@ -4,6 +4,8 @@ import MetalKit
 
 class LifeViewController: NSViewController {
     var eqTimer: Timer!
+    var mouseTimer: Timer!
+    var hidingMouse: Bool = false
     
     @IBOutlet weak var lifeView: LifeView! {
         didSet {
@@ -37,6 +39,30 @@ class LifeViewController: NSViewController {
     @IBAction func bgColorChanged(sender: NSColorWell) {
         let c = bgColorWell.color
         lifeView.uniforms.bgColor = float4(Float(c.redComponent), Float(c.greenComponent), Float(c.blueComponent), Float(c.alphaComponent))
+    }
+    
+    func setHidingMouse(on: Bool) {
+        if (on) {
+            NSCursor.setHiddenUntilMouseMoves(true)
+            self.hidingMouse = true
+        }
+        else {
+            NSCursor.setHiddenUntilMouseMoves(false)
+            self.hidingMouse = false
+            self.mouseTimer?.invalidate()
+        }
+    }
+    
+    override func mouseMoved(with event: NSEvent) {
+        if (self.hidingMouse) {
+            self.mouseTimer?.invalidate()
+            self.mouseTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(LifeViewController.mouseStopped), userInfo: nil, repeats: false)
+        }
+    }
+    
+    func mouseStopped() {
+        NSCursor.setHiddenUntilMouseMoves(true)
+        self.hidingMouse = true
     }
 
     func getColorsFromView() {
@@ -81,6 +107,9 @@ class LifeViewController: NSViewController {
             self.pointSizeSlider.isEnabled = false
             
             eqTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(LifeViewController.eqCheck), userInfo: nil, repeats: true)
+            
+            self.view.window?.delegate = self
+            self.view.window?.acceptsMouseMovedEvents = true
         }
     }
     
@@ -103,5 +132,15 @@ extension LifeViewController: MTKViewDelegate {
         if let cDraw = view.currentDrawable {
             self.lifeView.render(drawable: cDraw)
         }
+    }
+}
+
+extension LifeViewController: NSWindowDelegate {
+    func windowDidEnterFullScreen(_ notification: Notification) {
+        self.setHidingMouse(on: true)
+    }
+    
+    func windowDidExitFullScreen(_ notification: Notification) {
+        self.setHidingMouse(on: false)
     }
 }
