@@ -13,7 +13,6 @@
 		341D1F4F1ECB39D900D90465 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349DA86A1ECA18F70048C4FD /* Life.swift */; };
 		341D1F501ECB39E500D90465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26C1EC7536B0094C4B1 /* Main.storyboard */; };
 		341D1F511ECB39E700D90465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26A1EC7536B0094C4B1 /* Assets.xcassets */; };
-		341D1F521ECB3A1100D90465 /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B485281ECAB5C200813F90 /* AAPLMathUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +24,6 @@
 		3420D26F1EC7536B0094C4B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3420D2751EC755090094C4B1 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		349DA86A1ECA18F70048C4FD /* Life.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
-		34B485261ECAB5C200813F90 /* Metal-Life-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Metal-Life-Bridging-Header.h"; path = "Metal-Life/Metal-Life-Bridging-Header.h"; sourceTree = "<group>"; };
-		34B485271ECAB5C200813F90 /* AAPLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLMathUtilities.h; path = "../Landscape-Metal/lib/AAPLMathUtilities.h"; sourceTree = "<group>"; };
-		34B485281ECAB5C200813F90 /* AAPLMathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AAPLMathUtilities.m; path = "../Landscape-Metal/lib/AAPLMathUtilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				3420D2651EC7536B0094C4B1 /* Metal-Life */,
-				34B485251ECAB5B700813F90 /* lib */,
 				3420D2641EC7536B0094C4B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,16 +65,6 @@
 				3420D26F1EC7536B0094C4B1 /* Info.plist */,
 			);
 			path = "Metal-Life";
-			sourceTree = "<group>";
-		};
-		34B485251ECAB5B700813F90 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				34B485271ECAB5C200813F90 /* AAPLMathUtilities.h */,
-				34B485281ECAB5C200813F90 /* AAPLMathUtilities.m */,
-				34B485261ECAB5C200813F90 /* Metal-Life-Bridging-Header.h */,
-			);
-			name = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,7 +138,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				341D1F521ECB3A1100D90465 /* AAPLMathUtilities.m in Sources */,
 				341D1F4C1ECB39CD00D90465 /* Shaders.metal in Sources */,
 				341D1F4D1ECB39D200D90465 /* AppDelegate.swift in Sources */,
 				341D1F4E1ECB39D600D90465 /* LifeViewController.swift in Sources */,
@@ -185,7 +169,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shaneliesegang.Metal-Life";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Metal-Life/Metal-Life-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -200,7 +183,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shaneliesegang.Metal-Life";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Metal-Life/Metal-Life-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

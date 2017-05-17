@@ -65,14 +65,39 @@ class LifeView: MTKView {
         self.needsReset = true
     }
     
+    func makeOrthoMatrix(left: Float, right: Float, bottom: Float, top: Float, near: Float, far: Float) -> float4x4 {
+        
+        var forReturn: float4x4 = float4x4();
+        
+        forReturn[0][0] = Float(2.0) / (right - left);
+        forReturn[0][1] = Float(0.0);
+        forReturn[0][2] = Float(0.0);
+        forReturn[0][3] = Float(0.0);
+        forReturn[1][0] = Float(0.0);
+        forReturn[1][1] = Float(2.0) / (top - bottom);
+        forReturn[1][2] = Float(0.0);
+        forReturn[1][3] = Float(0.0);
+        forReturn[2][0] = Float(0.0);
+        forReturn[2][1] = Float(0.0);
+        forReturn[2][2] = Float(1.0) / (far - near);
+        forReturn[2][3] = Float(1.0);
+        forReturn[3][0] = (left + right) / (left - right);
+        forReturn[3][1] = (top + bottom) / (bottom - top);
+        forReturn[3][2] = near / (near - far);
+        forReturn[3][3] = Float(1.0);
+        
+        return forReturn;
+    }
+ 
     func resetBuffers() {
         self.needsReset = false
-                
+ 
         let pixelSpacing: Float = (3.0 / 128.0)
         let gridSpacing: Float = (40.0 / 3.0)
         let unitDimensions: float2 = float2(Float(self.bounds.width) * pixelSpacing, Float(self.bounds.height) * pixelSpacing) * 0.5
         
-        self.uniforms.mvpMatrix = matrix_ortho(-unitDimensions.x, unitDimensions.x, -unitDimensions.y, unitDimensions.y, -1.0, 1.0)
+        let ortho = makeOrthoMatrix(left: -unitDimensions.x, right: unitDimensions.x, bottom: -unitDimensions.y, top: unitDimensions.y, near: -1.0, far: 1.0)
+        self.uniforms.mvpMatrix = ortho.cmatrix
         self.uniforms.gridDimensions.x = UInt32(unitDimensions.x * gridSpacing)
         self.uniforms.gridDimensions.y = UInt32(unitDimensions.y * gridSpacing)
         self.numCells = Int(self.uniforms.gridDimensions.x * self.uniforms.gridDimensions.y)
