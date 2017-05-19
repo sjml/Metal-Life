@@ -13,6 +13,9 @@
 		341D1F4F1ECB39D900D90465 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349DA86A1ECA18F70048C4FD /* Life.swift */; };
 		341D1F501ECB39E500D90465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26C1EC7536B0094C4B1 /* Main.storyboard */; };
 		341D1F511ECB39E700D90465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26A1EC7536B0094C4B1 /* Assets.xcassets */; };
+		342B70DB1ECE98400074E764 /* LifeViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342B70DA1ECE98400074E764 /* LifeViewTest.swift */; };
+		342B70DD1ECE9BE30074E764 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349DA86A1ECA18F70048C4FD /* Life.swift */; };
+		342B70DE1ECEA34A0074E764 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3420D2751EC755090094C4B1 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +26,21 @@
 		3420D26D1EC7536B0094C4B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3420D26F1EC7536B0094C4B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3420D2751EC755090094C4B1 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		342B70D01ECE98060074E764 /* LifeSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		342B70D61ECE98060074E764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../LifeSaver/Info.plist; sourceTree = "<group>"; };
+		342B70DA1ECE98400074E764 /* LifeViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LifeViewTest.swift; path = ../LifeSaver/LifeViewTest.swift; sourceTree = "<group>"; };
 		349DA86A1ECA18F70048C4FD /* Life.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		341D1F3A1ECB39AC00D90465 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		342B70CC1ECE98060074E764 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				3420D2651EC7536B0094C4B1 /* Metal-Life */,
+				342B70D11ECE98060074E764 /* LifeSaver */,
 				3420D2641EC7536B0094C4B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				341D1F3D1ECB39AC00D90465 /* Metal-Life.app */,
+				342B70D01ECE98060074E764 /* LifeSaver.saver */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,7 +82,27 @@
 			path = "Metal-Life";
 			sourceTree = "<group>";
 		};
+		342B70D11ECE98060074E764 /* LifeSaver */ = {
+			isa = PBXGroup;
+			children = (
+				342B70D61ECE98060074E764 /* Info.plist */,
+				342B70DA1ECE98400074E764 /* LifeViewTest.swift */,
+			);
+			name = LifeSaver;
+			path = LifeSaver;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		342B70CD1ECE98060074E764 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		341D1F3C1ECB39AC00D90465 /* Metal-Life */ = {
@@ -87,6 +122,24 @@
 			productReference = 341D1F3D1ECB39AC00D90465 /* Metal-Life.app */;
 			productType = "com.apple.product-type.application";
 		};
+		342B70CF1ECE98060074E764 /* LifeSaver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 342B70D91ECE98060074E764 /* Build configuration list for PBXNativeTarget "LifeSaver" */;
+			buildPhases = (
+				342B70CB1ECE98060074E764 /* Sources */,
+				342B70CC1ECE98060074E764 /* Frameworks */,
+				342B70CD1ECE98060074E764 /* Headers */,
+				342B70CE1ECE98060074E764 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LifeSaver;
+			productName = LifeSaver;
+			productReference = 342B70D01ECE98060074E764 /* LifeSaver.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +152,12 @@
 					341D1F3C1ECB39AC00D90465 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = CFJYV723M9;
+						ProvisioningStyle = Automatic;
+					};
+					342B70CF1ECE98060074E764 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = CFJYV723M9;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -117,6 +176,7 @@
 			projectRoot = "";
 			targets = (
 				341D1F3C1ECB39AC00D90465 /* Metal-Life */,
+				342B70CF1ECE98060074E764 /* LifeSaver */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +191,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		342B70CE1ECE98060074E764 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -142,6 +209,16 @@
 				341D1F4D1ECB39D200D90465 /* AppDelegate.swift in Sources */,
 				341D1F4E1ECB39D600D90465 /* LifeViewController.swift in Sources */,
 				341D1F4F1ECB39D900D90465 /* Life.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		342B70CB1ECE98060074E764 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				342B70DE1ECEA34A0074E764 /* Shaders.metal in Sources */,
+				342B70DD1ECE9BE30074E764 /* Life.swift in Sources */,
+				342B70DB1ECE98400074E764 /* LifeViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +356,41 @@
 			};
 			name = Release;
 		};
+		342B70D71ECE98060074E764 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				INFOPLIST_FILE = LifeSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shaneliesegang.LifeSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		342B70D81ECE98060074E764 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				INFOPLIST_FILE = LifeSaver/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shaneliesegang.LifeSaver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -299,6 +411,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		342B70D91ECE98060074E764 /* Build configuration list for PBXNativeTarget "LifeSaver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				342B70D71ECE98060074E764 /* Debug */,
+				342B70D81ECE98060074E764 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

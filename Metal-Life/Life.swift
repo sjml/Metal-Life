@@ -29,6 +29,10 @@ class LifeView: MTKView {
         super.init(coder: coder)
     }
     
+    override init(frame frameRect: CGRect, device: MTLDevice?) {
+        super.init(frame: frameRect, device: device)
+    }
+    
     override var acceptsFirstResponder: Bool {
         return true
     }
@@ -36,10 +40,13 @@ class LifeView: MTKView {
     func setup(device: MTLDevice) {
         self.device = device
 
-        let defaultLibrary = device.newDefaultLibrary()
-        let fragmentProgram = defaultLibrary!.makeFunction(name: "lifeFragment")
-        vertexProgram = defaultLibrary!.makeFunction(name: "lifeVertex")
-        simulateProgram = defaultLibrary!.makeFunction(name: "lifeSimulate")
+        var metalLib = device.newDefaultLibrary()
+        if (metalLib == nil) {
+            try! metalLib = device.makeLibrary(filepath: Bundle(for: LifeView.self).path(forResource: "default", ofType: "metallib")!)
+        }
+        let fragmentProgram = metalLib!.makeFunction(name: "lifeFragment")
+        vertexProgram = metalLib!.makeFunction(name: "lifeVertex")
+        simulateProgram = metalLib!.makeFunction(name: "lifeSimulate")
         
         let renderStateDescriptor = MTLRenderPipelineDescriptor()
         renderStateDescriptor.vertexFunction = vertexProgram

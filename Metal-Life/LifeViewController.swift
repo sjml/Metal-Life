@@ -106,19 +106,11 @@ class LifeViewController: NSViewController {
             self.fgColorWell.isEnabled = false
             self.pointSizeSlider.isEnabled = false
             
-            eqTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(LifeViewController.eqCheck), userInfo: nil, repeats: true)
+            eqTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self.lifeView, selector: #selector(LifeView.checkForEquilibrium), userInfo: nil, repeats: true)
             
             self.view.window?.delegate = self
             self.view.window?.acceptsMouseMovedEvents = true
         }
-    }
-    
-    func eqCheck() {
-        lifeView.checkForEquilibrium()
-    }
-    
-    func pointSizeChanged() {
-        
     }
 }
 
