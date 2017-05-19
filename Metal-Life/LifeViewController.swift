@@ -6,6 +6,7 @@ class LifeViewController: NSViewController {
     var eqTimer: Timer!
     var mouseTimer: Timer!
     var hidingMouse: Bool = false
+    let defaults: UserDefaults = UserDefaults.standard
     
     @IBOutlet weak var lifeView: LifeView! {
         didSet {
@@ -15,6 +16,7 @@ class LifeViewController: NSViewController {
         }
     }
     @IBOutlet weak var controlGroup: NSBox!
+    @IBOutlet weak var defaultsButton: NSButton!
     @IBOutlet weak var pointSizeSlider: NSSlider! {
         didSet {
             pointSizeSlider.minValue = 1.0
@@ -27,6 +29,7 @@ class LifeViewController: NSViewController {
 //            self.pointSizeSlider.doubleValue = Double(lround(self.pointSizeSlider.doubleValue))
 //        }
         lifeView.uniforms.pointSize = Float(self.pointSizeSlider.doubleValue)
+        self.defaults.set(self.pointSizeSlider.doubleValue, forKey: "pointSize")
     }
     
     @IBOutlet weak var bgColorWell: NSColorWell!
@@ -35,10 +38,31 @@ class LifeViewController: NSViewController {
     @IBAction func fgColorChanged(sender: NSColorWell) {
         let c = fgColorWell.color
         lifeView.uniforms.fgColor = float4(Float(c.redComponent), Float(c.greenComponent), Float(c.blueComponent), Float(c.alphaComponent))
+        
+        self.defaults.set(c.redComponent,   forKey: "fgRed")
+        self.defaults.set(c.greenComponent, forKey: "fgGreen")
+        self.defaults.set(c.blueComponent,  forKey: "fgBlue")
+        
     }
     @IBAction func bgColorChanged(sender: NSColorWell) {
         let c = bgColorWell.color
         lifeView.uniforms.bgColor = float4(Float(c.redComponent), Float(c.greenComponent), Float(c.blueComponent), Float(c.alphaComponent))
+        
+        self.defaults.set(c.redComponent,   forKey: "bgRed")
+        self.defaults.set(c.greenComponent, forKey: "bgGreen")
+        self.defaults.set(c.blueComponent,  forKey: "bgBlue")
+    }
+    @IBAction func defaultsButtonAction(sender: NSButton) {
+        self.defaults.set(9.0,  forKey: "pointSize")
+        self.defaults.set(0.25, forKey: "bgRed")
+        self.defaults.set(0.0,  forKey: "bgGreen")
+        self.defaults.set(0.0,  forKey: "bgBlue")
+        self.defaults.set(1.0,  forKey: "fgRed")
+        self.defaults.set(0.0,  forKey: "fgGreen")
+        self.defaults.set(0.0,  forKey: "fgBlue")
+        
+        self.syncRendering()
+        self.syncUI()
     }
     
     func setHidingMouse(on: Bool) {
@@ -60,17 +84,23 @@ class LifeViewController: NSViewController {
         }
     }
     
+    override func mouseDown(with event: NSEvent) {
+        if !self.pointSizeSlider.isEnabled {
+            return
+        }
+        
+        if (!self.bgColorWell.isActive && !self.fgColorWell.isActive) {
+            self.controlGroup.alphaValue = 0.0
+            self.bgColorWell.isEnabled = false
+            self.fgColorWell.isEnabled = false
+            self.pointSizeSlider.isEnabled = false
+            self.defaults.synchronize()
+        }
+    }
+    
     func mouseStopped() {
         NSCursor.setHiddenUntilMouseMoves(true)
         self.hidingMouse = true
-    }
-
-    func getColorsFromView() {
-        let bg: float4 = lifeView.uniforms.bgColor
-        let fg: float4 = lifeView.uniforms.fgColor
-        
-        self.bgColorWell.color = NSColor(red: CGFloat(bg.x), green: CGFloat(bg.y), blue: CGFloat(bg.z), alpha: CGFloat(bg.w))
-        self.fgColorWell.color = NSColor(red: CGFloat(fg.x), green: CGFloat(fg.y), blue: CGFloat(fg.z), alpha: CGFloat(fg.w))
     }
     
     override func flagsChanged(with event: NSEvent) {
@@ -79,7 +109,7 @@ class LifeViewController: NSViewController {
             self.bgColorWell.isEnabled = true
             self.fgColorWell.isEnabled = true
             self.pointSizeSlider.isEnabled = true
-            self.getColorsFromView()
+            self.syncUI()
         }
         else {
             if (!self.bgColorWell.isActive && !self.fgColorWell.isActive) {
@@ -87,6 +117,7 @@ class LifeViewController: NSViewController {
                 self.bgColorWell.isEnabled = false
                 self.fgColorWell.isEnabled = false
                 self.pointSizeSlider.isEnabled = false
+                self.defaults.synchronize()
             }
         }
     }
@@ -97,10 +128,15 @@ class LifeViewController: NSViewController {
         if let device = MTLCreateSystemDefaultDevice() {
             lifeView.setup(device: device)
             
-            lifeView.uniforms.bgColor = float4(0.25, 0.0, 0.0, 1.0)
-            lifeView.uniforms.fgColor = float4(1.0, 0.0, 0.0, 1.0)
+            let prefsFilePath = Bundle.main.path(forResource: "InitialPreferences", ofType: "plist")
+            let nsDefaultPrefs = NSDictionary(contentsOfFile: prefsFilePath!)
+            if let defaultPrefs: Dictionary<String,Any> = nsDefaultPrefs as? Dictionary<String, Any> {
+                self.defaults.register(defaults: defaultPrefs)
+            }
             
-            getColorsFromView()
+            self.syncRendering()
+            
+            self.syncUI()
             self.controlGroup.alphaValue = 0.0
             self.bgColorWell.isEnabled = false
             self.fgColorWell.isEnabled = false
@@ -111,6 +147,38 @@ class LifeViewController: NSViewController {
             self.view.window?.delegate = self
             self.view.window?.acceptsMouseMovedEvents = true
         }
+    }
+    
+    func syncRendering() {
+        self.lifeView.uniforms.pointSize = self.defaults.float(forKey: "pointSize")
+        self.lifeView.uniforms.bgColor = float4(
+            self.defaults.float(forKey: "bgRed"),
+            self.defaults.float(forKey: "bgGreen"),
+            self.defaults.float(forKey: "bgBlue"),
+            1.0
+        )
+        self.lifeView.uniforms.fgColor = float4(
+            self.defaults.float(forKey: "fgRed"),
+            self.defaults.float(forKey: "fgGreen"),
+            self.defaults.float(forKey: "fgBlue"),
+            1.0
+        )
+    }
+    
+    func syncUI() {
+        self.pointSizeSlider.doubleValue = self.defaults.double(forKey: "pointSize")
+        self.bgColorWell.color = NSColor(
+            red: CGFloat(self.defaults.double(forKey: "bgRed")),
+            green: CGFloat(self.defaults.double(forKey: "bgGreen")),
+            blue: CGFloat(self.defaults.double(forKey: "bgBlue")),
+            alpha: 1.0
+        )
+        self.fgColorWell.color = NSColor(
+            red: CGFloat(self.defaults.double(forKey: "fgRed")),
+            green: CGFloat(self.defaults.double(forKey: "fgGreen")),
+            blue: CGFloat(self.defaults.double(forKey: "fgBlue")),
+            alpha: 1.0
+        )
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
@@ -692,15 +692,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <box fixedFrame="YES" title="Control Group Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rIn-uQ-gZO">
-                                        <rect key="frame" x="867" y="677" width="160" height="94"/>
+                                    <box fixedFrame="YES" borderType="none" title="Control Group Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="rIn-uQ-gZO">
+                                        <rect key="frame" x="867" y="659" width="160" height="112"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" ambiguous="YES" id="Tsv-GU-w5p">
-                                            <rect key="frame" x="2" y="2" width="156" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="112"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o30-IC-OtK">
-                                                    <rect key="frame" x="20" y="53" width="118" height="19"/>
+                                                    <rect key="frame" x="24" y="75" width="118" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                     <sliderCell key="cell" continuous="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="LvH-gg-HJR"/>
                                                     <connections>
@@ -708,7 +708,7 @@
                                                     </connections>
                                                 </slider>
                                                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ryF-5D-Gpf">
-                                                    <rect key="frame" x="22" y="24" width="44" height="23"/>
+                                                    <rect key="frame" x="22" y="46" width="44" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
@@ -716,13 +716,24 @@
                                                     </connections>
                                                 </colorWell>
                                                 <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKB-4B-b1i">
-                                                    <rect key="frame" x="92" y="24" width="44" height="23"/>
+                                                    <rect key="frame" x="92" y="46" width="44" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="fgColorChangedWithSender:" target="XfG-lQ-9wD" id="d2O-XA-Mck"/>
                                                     </connections>
                                                 </colorWell>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2k-sy-9zG">
+                                                    <rect key="frame" x="33" y="5" width="91" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hqU-oq-ay1">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="defaultsButtonActionWithSender:" target="XfG-lQ-9wD" id="S0v-2G-lzW"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                     </box>
@@ -733,6 +744,7 @@
                     <connections>
                         <outlet property="bgColorWell" destination="ryF-5D-Gpf" id="PeL-gD-6z3"/>
                         <outlet property="controlGroup" destination="rIn-uQ-gZO" id="qpM-eA-tmc"/>
+                        <outlet property="defaultsButton" destination="f2k-sy-9zG" id="jSq-QD-KD1"/>
                         <outlet property="fgColorWell" destination="wKB-4B-b1i" id="U5Y-ig-tcL"/>
                         <outlet property="lifeView" destination="o7B-Md-Vxm" id="jWt-2b-Ip3"/>
                         <outlet property="pointSizeSlider" destination="o30-IC-OtK" id="rwR-Hs-Ioo"/>

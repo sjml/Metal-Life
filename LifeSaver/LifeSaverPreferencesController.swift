@@ -17,25 +17,25 @@ class LifeSaverPreferencesController: NSWindowController {
     @IBOutlet weak var pointSizeLabel: NSTextField!
     
     @IBAction func okButtonAction(_ sender: Any) {
-        self.defaults?.set(pointSizeSlider.doubleValue, forKey: "pointSize")
-        self.defaults?.set(bgColorWell.color.redComponent, forKey: "bgRed")
+        self.defaults?.set(pointSizeSlider.doubleValue,      forKey: "pointSize")
+        self.defaults?.set(bgColorWell.color.redComponent,   forKey: "bgRed")
         self.defaults?.set(bgColorWell.color.greenComponent, forKey: "bgGreen")
-        self.defaults?.set(bgColorWell.color.blueComponent, forKey: "bgBlue")
-        self.defaults?.set(fgColorWell.color.redComponent, forKey: "fgRed")
+        self.defaults?.set(bgColorWell.color.blueComponent,  forKey: "bgBlue")
+        self.defaults?.set(fgColorWell.color.redComponent,   forKey: "fgRed")
         self.defaults?.set(fgColorWell.color.greenComponent, forKey: "fgGreen")
-        self.defaults?.set(fgColorWell.color.blueComponent, forKey: "fgBlue")
+        self.defaults?.set(fgColorWell.color.blueComponent,  forKey: "fgBlue")
         
         self.defaults?.synchronize()
         NSApp.mainWindow?.endSheet(self.window!)
     }
     @IBAction func restoreButtonAction(_ sender: Any) {
-        self.defaults?.set(9.0, forKey: "pointSize")
+        self.defaults?.set(9.0,  forKey: "pointSize")
         self.defaults?.set(0.25, forKey: "bgRed")
-        self.defaults?.set(0.0, forKey: "bgGreen")
-        self.defaults?.set(0.0, forKey: "bgBlue")
-        self.defaults?.set(1.0, forKey: "fgRed")
-        self.defaults?.set(0.0, forKey: "fgGreen")
-        self.defaults?.set(0.0, forKey: "fgBlue")
+        self.defaults?.set(0.0,  forKey: "bgGreen")
+        self.defaults?.set(0.0,  forKey: "bgBlue")
+        self.defaults?.set(1.0,  forKey: "fgRed")
+        self.defaults?.set(0.0,  forKey: "fgGreen")
+        self.defaults?.set(0.0,  forKey: "fgBlue")
         
         self.syncUI()
     }
