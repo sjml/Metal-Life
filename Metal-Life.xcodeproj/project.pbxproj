@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		3476829E1ECF537B009E9BD6 /* Both */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3476829F1ECF537B009E9BD6 /* Build configuration list for PBXAggregateTarget "Both" */;
+			buildPhases = (
+			);
+			dependencies = (
+				347682A31ECF538C009E9BD6 /* PBXTargetDependency */,
+				347682A51ECF538E009E9BD6 /* PBXTargetDependency */,
+			);
+			name = Both;
+			productName = "com.shaneliesegang.Metal-Life.Both";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		341D1F4C1ECB39CD00D90465 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3420D2751EC755090094C4B1 /* Shaders.metal */; };
 		341D1F4D1ECB39D200D90465 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420D2661EC7536B0094C4B1 /* AppDelegate.swift */; };
@@ -21,6 +36,23 @@
 		3476829B1ECEC70B009E9BD6 /* InitialPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */; };
 		3476829C1ECF4918009E9BD6 /* InitialPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		347682A21ECF538C009E9BD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3420D25B1EC7536B0094C4B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 341D1F3C1ECB39AC00D90465;
+			remoteInfo = "Metal-Life";
+		};
+		347682A41ECF538E009E9BD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3420D25B1EC7536B0094C4B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 342B70CF1ECE98060074E764;
+			remoteInfo = LifeSaver;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		341D1F3D1ECB39AC00D90465 /* Metal-Life.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Metal-Life.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +209,11 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
+					3476829E1ECF537B009E9BD6 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = CFJYV723M9;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 3420D25E1EC7536B0094C4B1 /* Build configuration list for PBXProject "Metal-Life" */;
@@ -192,6 +229,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				3476829E1ECF537B009E9BD6 /* Both */,
 				341D1F3C1ECB39AC00D90465 /* Metal-Life */,
 				342B70CF1ECE98060074E764 /* LifeSaver */,
 			);
@@ -245,6 +283,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		347682A31ECF538C009E9BD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 341D1F3C1ECB39AC00D90465 /* Metal-Life */;
+			targetProxy = 347682A21ECF538C009E9BD6 /* PBXContainerItemProxy */;
+		};
+		347682A51ECF538E009E9BD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 342B70CF1ECE98060074E764 /* LifeSaver */;
+			targetProxy = 347682A41ECF538E009E9BD6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		3420D26C1EC7536B0094C4B1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -264,6 +315,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CFJYV723M9;
 				INFOPLIST_FILE = "Metal-Life/Info.plist";
+				INSTALL_PATH = /;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shaneliesegang.Metal-Life";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,6 +330,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CFJYV723M9;
 				INFOPLIST_FILE = "Metal-Life/Info.plist";
+				INSTALL_PATH = /;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shaneliesegang.Metal-Life";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -385,11 +438,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CFJYV723M9;
 				INFOPLIST_FILE = LifeSaver/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				INSTALL_PATH = /;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shaneliesegang.LifeSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = saver;
@@ -404,13 +457,29 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CFJYV723M9;
 				INFOPLIST_FILE = LifeSaver/Info.plist;
-				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				INSTALL_PATH = /;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shaneliesegang.LifeSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+		347682A01ECF537B009E9BD6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		347682A11ECF537B009E9BD6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = CFJYV723M9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -443,6 +512,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3476829F1ECF537B009E9BD6 /* Build configuration list for PBXAggregateTarget "Both" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				347682A01ECF537B009E9BD6 /* Debug */,
+				347682A11ECF537B009E9BD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
