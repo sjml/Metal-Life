@@ -10,10 +10,9 @@
             <connections>
                 <outlet property="bgColorWell" destination="Cx5-Oh-ZkO" id="ayx-0M-CFY"/>
                 <outlet property="fgColorWell" destination="8c3-bX-Unj" id="Qry-NO-Idh"/>
-                <outlet property="okButton" destination="Uvi-ik-mms" id="jqk-jO-eyq"/>
+                <outlet property="fpsMenu" destination="rvU-Cy-3lN" id="8II-1U-HiE"/>
                 <outlet property="pointSizeLabel" destination="T6h-5O-GEc" id="5pe-S9-iyJ"/>
                 <outlet property="pointSizeSlider" destination="k14-xU-82N" id="fFY-Zc-deL"/>
-                <outlet property="restoreDefaultsButton" destination="pTg-s1-Njz" id="Kz2-rG-W0v"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="WdG-Tj-Vc2"/>
             </connections>
         </customObject>
@@ -22,10 +21,10 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="353" height="145"/>
+            <rect key="contentRect" x="196" y="240" width="353" height="174"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="353" height="145"/>
+                <rect key="frame" x="0.0" y="0.0" width="353" height="174"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uvi-ik-mms">
@@ -54,7 +53,7 @@ DQ
                         </connections>
                     </button>
                     <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k14-xU-82N">
-                        <rect key="frame" x="93" y="106" width="200" height="19"/>
+                        <rect key="frame" x="93" y="135" width="200" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="ugk-gf-ENE"/>
                         <connections>
@@ -62,7 +61,7 @@ DQ
                         </connections>
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3w-bU-SU1">
-                        <rect key="frame" x="20" y="108" width="64" height="17"/>
+                        <rect key="frame" x="20" y="137" width="64" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Point Size" id="akM-vQ-ylE">
                             <font key="font" metaFont="system"/>
@@ -71,7 +70,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6h-5O-GEc">
-                        <rect key="frame" x="297" y="108" width="38" height="17"/>
+                        <rect key="frame" x="297" y="137" width="38" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="[size]" id="RqP-xv-aIg">
                             <font key="font" metaFont="system"/>
@@ -80,39 +79,65 @@ DQ
                         </textFieldCell>
                     </textField>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8c3-bX-Unj">
-                        <rect key="frame" x="260" y="64" width="44" height="23"/>
+                        <rect key="frame" x="272" y="61" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40R-mr-f9V">
-                        <rect key="frame" x="179" y="67" width="75" height="17"/>
+                        <rect key="frame" x="192" y="64" width="74" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Foreground" id="YiJ-K9-CTQ">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Living Cells" id="YiJ-K9-CTQ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wff-vp-tFJ">
-                        <rect key="frame" x="20" y="67" width="77" height="17"/>
+                        <rect key="frame" x="196" y="95" width="70" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background" id="2oV-ga-QOC">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dead Cells" id="2oV-ga-QOC">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cx5-Oh-ZkO">
-                        <rect key="frame" x="103" y="64" width="44" height="23"/>
+                        <rect key="frame" x="272" y="92" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </colorWell>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eks-cV-wcD">
+                        <rect key="frame" x="20" y="80" width="66" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Framerate" id="j8X-4L-4kt">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rvU-Cy-3lN" userLabel="FPS Menu">
+                        <rect key="frame" x="90" y="74" width="76" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="60" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Zo6-3a-F0r" id="Zsj-KE-D0R">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="4Ak-MD-ZP3">
+                                <items>
+                                    <menuItem title="60" state="on" id="Zo6-3a-F0r"/>
+                                    <menuItem title="30" id="Byd-nf-sOa"/>
+                                    <menuItem title="20" id="Q9l-p6-eZJ"/>
+                                    <menuItem title="10" id="En8-hf-suh"/>
+                                    <menuItem title="5" id="X86-EZ-f86"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="HVt-2s-rhZ"/>
             </connections>
-            <point key="canvasLocation" x="68.5" y="84.5"/>
+            <point key="canvasLocation" x="68.5" y="99"/>
         </window>
     </objects>
 </document>

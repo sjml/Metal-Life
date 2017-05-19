@@ -16,6 +16,8 @@ class LifeSaverPreferencesController: NSWindowController {
     }
     @IBOutlet weak var pointSizeLabel: NSTextField!
     
+    @IBOutlet weak var fpsMenu: NSPopUpButton!
+    
     @IBAction func okButtonAction(_ sender: Any) {
         self.defaults?.set(pointSizeSlider.doubleValue,      forKey: "pointSize")
         self.defaults?.set(bgColorWell.color.redComponent,   forKey: "bgRed")
@@ -24,6 +26,10 @@ class LifeSaverPreferencesController: NSWindowController {
         self.defaults?.set(fgColorWell.color.redComponent,   forKey: "fgRed")
         self.defaults?.set(fgColorWell.color.greenComponent, forKey: "fgGreen")
         self.defaults?.set(fgColorWell.color.blueComponent,  forKey: "fgBlue")
+        
+        let req = fpsMenu.selectedItem?.title
+        let reqInt = Int(req!)!
+        self.defaults?.set(reqInt, forKey: "frameRate")
         
         self.defaults?.synchronize()
         NSApp.mainWindow?.endSheet(self.window!)
@@ -36,6 +42,7 @@ class LifeSaverPreferencesController: NSWindowController {
         self.defaults?.set(1.0,  forKey: "fgRed")
         self.defaults?.set(0.0,  forKey: "fgGreen")
         self.defaults?.set(0.0,  forKey: "fgBlue")
+        self.defaults?.set(60,   forKey: "frameRate")
         
         self.syncUI()
     }
@@ -77,5 +84,12 @@ class LifeSaverPreferencesController: NSWindowController {
             blue: CGFloat(self.defaults!.double(forKey: "fgBlue")),
             alpha: 1.0
         )
+        
+        let frameRate = self.defaults!.integer(forKey: "frameRate")
+        NSLog("got framerate: %d", frameRate)
+        NSLog(String(frameRate))
+        let menuItem = self.fpsMenu.item(withTitle: String(frameRate))
+        NSLog("got menu item")
+        self.fpsMenu.select(menuItem)
     }
 }

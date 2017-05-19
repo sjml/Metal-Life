@@ -1,5 +1,6 @@
 import Cocoa
-import MetalKit
+import Metal
+import simd
 
 
 class LifeViewController: NSViewController {
@@ -8,13 +9,7 @@ class LifeViewController: NSViewController {
     var hidingMouse: Bool = false
     let defaults: UserDefaults = UserDefaults.standard
     
-    @IBOutlet weak var lifeView: LifeView! {
-        didSet {
-            lifeView.delegate = self
-            lifeView.preferredFramesPerSecond = 60
-            lifeView.clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
-        }
-    }
+    @IBOutlet weak var lifeView: LifeView!
     @IBOutlet weak var controlGroup: NSBox!
     @IBOutlet weak var defaultsButton: NSButton!
     @IBOutlet weak var pointSizeSlider: NSSlider! {
@@ -25,11 +20,16 @@ class LifeViewController: NSViewController {
         }
     }
     @IBAction func pointSizeChanged(sender: NSSlider) {
-//        if (self.pointSizeSlider.doubleValue <= 10.0) {
-//            self.pointSizeSlider.doubleValue = Double(lround(self.pointSizeSlider.doubleValue))
-//        }
         lifeView.uniforms.pointSize = Float(self.pointSizeSlider.doubleValue)
         self.defaults.set(self.pointSizeSlider.doubleValue, forKey: "pointSize")
+    }
+    @IBOutlet weak var fpsMenu: NSPopUpButton!
+    @IBAction func fpsChangeRequested(sender: NSPopUpButton) {
+        let req = fpsMenu.selectedItem?.title
+        let reqInt = Int(req!)!
+        lifeView.numSkipFrames = (60 / reqInt) - 1
+        
+        self.defaults.set(reqInt, forKey: "frameRate")
     }
     
     @IBOutlet weak var bgColorWell: NSColorWell!
@@ -53,6 +53,7 @@ class LifeViewController: NSViewController {
         self.defaults.set(c.blueComponent,  forKey: "bgBlue")
     }
     @IBAction func defaultsButtonAction(sender: NSButton) {
+        self.defaults.set(60,   forKey: "frameRate")
         self.defaults.set(9.0,  forKey: "pointSize")
         self.defaults.set(0.25, forKey: "bgRed")
         self.defaults.set(0.0,  forKey: "bgGreen")
@@ -125,28 +126,28 @@ class LifeViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         
-        if let device = MTLCreateSystemDefaultDevice() {
-            lifeView.setup(device: device)
-            
-            let prefsFilePath = Bundle.main.path(forResource: "InitialPreferences", ofType: "plist")
-            let nsDefaultPrefs = NSDictionary(contentsOfFile: prefsFilePath!)
-            if let defaultPrefs: Dictionary<String,Any> = nsDefaultPrefs as? Dictionary<String, Any> {
-                self.defaults.register(defaults: defaultPrefs)
-            }
-            
-            self.syncRendering()
-            
-            self.syncUI()
-            self.controlGroup.alphaValue = 0.0
-            self.bgColorWell.isEnabled = false
-            self.fgColorWell.isEnabled = false
-            self.pointSizeSlider.isEnabled = false
-            
-            eqTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self.lifeView, selector: #selector(LifeView.checkForEquilibrium), userInfo: nil, repeats: true)
-            
-            self.view.window?.delegate = self
-            self.view.window?.acceptsMouseMovedEvents = true
+        lifeView.setup()
+        
+        let prefsFilePath = Bundle.main.path(forResource: "InitialPreferences", ofType: "plist")
+        let nsDefaultPrefs = NSDictionary(contentsOfFile: prefsFilePath!)
+        if let defaultPrefs: Dictionary<String,Any> = nsDefaultPrefs as? Dictionary<String, Any> {
+            self.defaults.register(defaults: defaultPrefs)
         }
+        
+        self.syncRendering()
+        
+        self.syncUI()
+        self.controlGroup.alphaValue = 0.0
+        self.bgColorWell.isEnabled = false
+        self.fgColorWell.isEnabled = false
+        self.pointSizeSlider.isEnabled = false
+        
+        eqTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self.lifeView, selector: #selector(LifeView.checkForEquilibrium), userInfo: nil, repeats: true)
+        
+        self.view.window?.delegate = self
+        self.view.window?.acceptsMouseMovedEvents = true
+        
+        lifeView.start()
     }
     
     func syncRendering() {
@@ -163,6 +164,8 @@ class LifeViewController: NSViewController {
             self.defaults.float(forKey: "fgBlue"),
             1.0
         )
+        let fr = self.defaults.integer(forKey: "frameRate")
+        self.lifeView.numSkipFrames = (60 / fr) - 1
     }
     
     func syncUI() {
@@ -179,19 +182,10 @@ class LifeViewController: NSViewController {
             blue: CGFloat(self.defaults.double(forKey: "fgBlue")),
             alpha: 1.0
         )
-    }
-}
-
-extension LifeViewController: MTKViewDelegate {
-    
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         
-    }
-    
-    func draw(in view: MTKView) {
-        if let cDraw = view.currentDrawable {
-            self.lifeView.render(drawable: cDraw)
-        }
+        let frameRate = self.defaults.integer(forKey: "frameRate")
+        let menuItem = self.fpsMenu.item(withTitle: String(frameRate))
+        self.fpsMenu.select(menuItem)
     }
 }
 
