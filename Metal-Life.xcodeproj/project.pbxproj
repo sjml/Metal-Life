@@ -35,6 +35,8 @@
 		342B70E21ECEB5790074E764 /* LifeSaverPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342B70E11ECEB5790074E764 /* LifeSaverPreferencesController.swift */; };
 		3476829B1ECEC70B009E9BD6 /* InitialPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */; };
 		3476829C1ECF4918009E9BD6 /* InitialPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */; };
+		347682A81ECF618A009E9BD6 /* thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 347682A61ECF618A009E9BD6 /* thumbnail.png */; };
+		347682A91ECF618A009E9BD6 /* thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 347682A71ECF618A009E9BD6 /* thumbnail@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		342B70DF1ECEB3AC0074E764 /* LifeSaverPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifeSaverPreferences.xib; sourceTree = "<group>"; };
 		342B70E11ECEB5790074E764 /* LifeSaverPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeSaverPreferencesController.swift; sourceTree = "<group>"; };
 		3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = InitialPreferences.plist; path = Shared/InitialPreferences.plist; sourceTree = "<group>"; };
+		347682A61ECF618A009E9BD6 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = assets/thumbnail.png; sourceTree = SOURCE_ROOT; };
+		347682A71ECF618A009E9BD6 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thumbnail@2x.png"; path = "assets/thumbnail@2x.png"; sourceTree = SOURCE_ROOT; };
 		349DA86A1ECA18F70048C4FD /* Life.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +133,8 @@
 				342B70E11ECEB5790074E764 /* LifeSaverPreferencesController.swift */,
 				342B70DF1ECEB3AC0074E764 /* LifeSaverPreferences.xib */,
 				342B70D61ECE98060074E764 /* Info.plist */,
+				347682A61ECF618A009E9BD6 /* thumbnail.png */,
+				347682A71ECF618A009E9BD6 /* thumbnail@2x.png */,
 			);
 			path = LifeSaver;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3476829B1ECEC70B009E9BD6 /* InitialPreferences.plist in Resources */,
+				347682A91ECF618A009E9BD6 /* thumbnail@2x.png in Resources */,
 				342B70E01ECEB3AC0074E764 /* LifeSaverPreferences.xib in Resources */,
+				347682A81ECF618A009E9BD6 /* thumbnail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
