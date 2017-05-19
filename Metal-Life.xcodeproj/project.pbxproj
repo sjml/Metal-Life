@@ -13,9 +13,12 @@
 		341D1F4F1ECB39D900D90465 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349DA86A1ECA18F70048C4FD /* Life.swift */; };
 		341D1F501ECB39E500D90465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26C1EC7536B0094C4B1 /* Main.storyboard */; };
 		341D1F511ECB39E700D90465 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3420D26A1EC7536B0094C4B1 /* Assets.xcassets */; };
-		342B70DB1ECE98400074E764 /* LifeViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342B70DA1ECE98400074E764 /* LifeViewTest.swift */; };
+		342B70DB1ECE98400074E764 /* LifeSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342B70DA1ECE98400074E764 /* LifeSaverView.swift */; };
 		342B70DD1ECE9BE30074E764 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349DA86A1ECA18F70048C4FD /* Life.swift */; };
 		342B70DE1ECEA34A0074E764 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 3420D2751EC755090094C4B1 /* Shaders.metal */; };
+		342B70E01ECEB3AC0074E764 /* LifeSaverPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 342B70DF1ECEB3AC0074E764 /* LifeSaverPreferences.xib */; };
+		342B70E21ECEB5790074E764 /* LifeSaverPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342B70E11ECEB5790074E764 /* LifeSaverPreferencesController.swift */; };
+		3476829B1ECEC70B009E9BD6 /* InitialPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +31,10 @@
 		3420D2751EC755090094C4B1 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		342B70D01ECE98060074E764 /* LifeSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		342B70D61ECE98060074E764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../LifeSaver/Info.plist; sourceTree = "<group>"; };
-		342B70DA1ECE98400074E764 /* LifeViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LifeViewTest.swift; path = ../LifeSaver/LifeViewTest.swift; sourceTree = "<group>"; };
+		342B70DA1ECE98400074E764 /* LifeSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeSaverView.swift; sourceTree = "<group>"; };
+		342B70DF1ECEB3AC0074E764 /* LifeSaverPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LifeSaverPreferences.xib; sourceTree = "<group>"; };
+		342B70E11ECEB5790074E764 /* LifeSaverPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeSaverPreferencesController.swift; sourceTree = "<group>"; };
+		3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InitialPreferences.plist; sourceTree = "<group>"; };
 		349DA86A1ECA18F70048C4FD /* Life.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,10 +91,12 @@
 		342B70D11ECE98060074E764 /* LifeSaver */ = {
 			isa = PBXGroup;
 			children = (
+				342B70DA1ECE98400074E764 /* LifeSaverView.swift */,
+				342B70DF1ECEB3AC0074E764 /* LifeSaverPreferences.xib */,
+				342B70E11ECEB5790074E764 /* LifeSaverPreferencesController.swift */,
+				3476829A1ECEC70B009E9BD6 /* InitialPreferences.plist */,
 				342B70D61ECE98060074E764 /* Info.plist */,
-				342B70DA1ECE98400074E764 /* LifeViewTest.swift */,
 			);
-			name = LifeSaver;
 			path = LifeSaver;
 			sourceTree = "<group>";
 		};
@@ -195,6 +203,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3476829B1ECEC70B009E9BD6 /* InitialPreferences.plist in Resources */,
+				342B70E01ECEB3AC0074E764 /* LifeSaverPreferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,8 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				342B70DE1ECEA34A0074E764 /* Shaders.metal in Sources */,
+				342B70E21ECEB5790074E764 /* LifeSaverPreferencesController.swift in Sources */,
 				342B70DD1ECE9BE30074E764 /* Life.swift in Sources */,
-				342B70DB1ECE98400074E764 /* LifeViewTest.swift in Sources */,
+				342B70DB1ECE98400074E764 /* LifeSaverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +430,7 @@
 				342B70D81ECE98060074E764 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
