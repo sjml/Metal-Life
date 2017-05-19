@@ -4,6 +4,8 @@
 
 (Originally the CPU was doing nothing at all, just telling the GPU when to reset its buffers. Then I got greedy and wanted to be able to change the colors and point size without restarting, which meant the CPU had to get more involved to coordinate the UI with the shaders. Less pure, but more fun to play with. Mission of learning about Metal, Swift, and brushing up on Cocoa UI setups: accomplished.) 
 
+Now there's a screensaver, too! :D 
+
 ## The program in action
 ![life at work](screenshots/example.gif)
 
