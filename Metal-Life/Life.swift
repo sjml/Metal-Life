@@ -13,7 +13,6 @@ struct Uniforms {
 class LifeView : NSView {
     let device: MTLDevice
     var displayLink: CVDisplayLink!
-    // 0 = 60; 1 = 30; 3 = 15; 5 = 10; 11 = 5; 29 = 2; 59 = 1; 119 = 0.5
     var numSkipFrames: Int = 0
     private var frameSkipCounter: Int
     var simulationPipelineState: MTLRenderPipelineState!
@@ -68,8 +67,8 @@ class LifeView : NSView {
             mLayer.device = self.device
             mLayer.pixelFormat = .bgra8Unorm
             mLayer.framebufferOnly = true
-            mLayer.contentsScale = window.backingScaleFactor
             mLayer.frame = self.layer!.frame
+            mLayer.contentsScale = window.backingScaleFactor
             mLayer.isOpaque = true
             self.layer = mLayer
 
@@ -176,7 +175,7 @@ class LifeView : NSView {
         self.cpuCellsBuffer = currentInts
 
         let change = Float(changeCount) / Float(self.numCells)
-        //        print("\(change * 100.0)% change since last check.")
+//        print("\(change * 100.0)% change since last check.")
 
         if change < 0.001 {
             self.needsReset = true
@@ -187,7 +186,12 @@ class LifeView : NSView {
         let pixelSpacing: Float = (3.0 / 128.0)
         let gridSpacing: Float = (40.0 / 3.0)
         let unitDimensions: float2 = float2(Float(self.bounds.width) * pixelSpacing, Float(self.bounds.height) * pixelSpacing) * 0.5
-
+        
+        (self.layer as! CAMetalLayer).drawableSize = CGSize(
+            width: self.bounds.width * self.layer!.contentsScale,
+            height: self.bounds.height * self.layer!.contentsScale
+        )
+        
         let ortho = makeOrthoMatrix(left: -unitDimensions.x, right: unitDimensions.x, bottom: -unitDimensions.y, top: unitDimensions.y, near: -1.0, far: 1.0)
         self.uniforms.mvpMatrix = ortho.cmatrix
         self.uniforms.gridDimensions.x = UInt32(unitDimensions.x * gridSpacing)
