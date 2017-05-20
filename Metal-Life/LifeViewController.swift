@@ -95,6 +95,7 @@ class LifeViewController: NSViewController {
             self.bgColorWell.isEnabled = false
             self.fgColorWell.isEnabled = false
             self.pointSizeSlider.isEnabled = false
+            self.fpsMenu.isEnabled = false
             self.defaults.synchronize()
         }
     }
@@ -110,6 +111,7 @@ class LifeViewController: NSViewController {
             self.bgColorWell.isEnabled = true
             self.fgColorWell.isEnabled = true
             self.pointSizeSlider.isEnabled = true
+            self.fpsMenu.isEnabled = true
             self.syncUI()
         }
         else {
@@ -118,6 +120,7 @@ class LifeViewController: NSViewController {
                 self.bgColorWell.isEnabled = false
                 self.fgColorWell.isEnabled = false
                 self.pointSizeSlider.isEnabled = false
+                self.fpsMenu.isEnabled = false
                 self.defaults.synchronize()
             }
         }
@@ -141,6 +144,7 @@ class LifeViewController: NSViewController {
         self.bgColorWell.isEnabled = false
         self.fgColorWell.isEnabled = false
         self.pointSizeSlider.isEnabled = false
+        self.fpsMenu.isEnabled = false
         
         eqTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self.lifeView, selector: #selector(LifeView.checkForEquilibrium), userInfo: nil, repeats: true)
         
