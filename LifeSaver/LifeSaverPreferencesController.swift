@@ -86,10 +86,7 @@ class LifeSaverPreferencesController: NSWindowController {
         )
         
         let frameRate = self.defaults!.integer(forKey: "frameRate")
-        NSLog("got framerate: %d", frameRate)
-        NSLog(String(frameRate))
         let menuItem = self.fpsMenu.item(withTitle: String(frameRate))
-        NSLog("got menu item")
         self.fpsMenu.select(menuItem)
     }
 }

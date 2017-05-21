@@ -11,7 +11,6 @@ class LifeSaverView: ScreenSaverView {
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
                 
-//        NSLog("Initting new LifeSaverView")
         self.lifeView = LifeView(frame: frame)
         
         self.addSubview(lifeView!)
@@ -68,14 +67,12 @@ class LifeSaverView: ScreenSaverView {
     }
     
     override func startAnimation() {
-//        NSLog("Starting anim on LifeView")
         if (self.lifeView != nil) {
             self.lifeView!.start()
         }
     }
     
     override func stopAnimation() {
-//        NSLog("Stopping anim on LifeView")
         if (self.lifeView != nil) {
             self.lifeView!.stop()
         }
