@@ -175,7 +175,7 @@ class LifeView : NSView {
         self.cpuCellsBuffer = currentInts
 
         let change = Float(changeCount) / Float(self.numCells)
-//        print("\(change * 100.0)% change since last check.")
+//        NSLog("\(change * 100.0)%% change since last check.")
 
         if change < 0.001 {
             self.needsReset = true
