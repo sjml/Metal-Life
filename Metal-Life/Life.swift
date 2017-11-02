@@ -75,7 +75,7 @@ class LifeView : NSView {
             self.displayLink = makeDisplayLink(window: window)
         }
 
-        var metalLib = device.newDefaultLibrary()
+        var metalLib = device.makeDefaultLibrary()
         if (metalLib == nil) {
             try! metalLib = device.makeLibrary(filepath: Bundle(for: LifeView.self).path(forResource: "default", ofType: "metallib")!)
         }
@@ -123,8 +123,9 @@ class LifeView : NSView {
         }
 
         var link: CVDisplayLink?
-        let screensID = UInt32(window.screen!.deviceDescription["NSScreenNumber"] as! Int)
-        CVDisplayLinkCreateWithCGDisplay(screensID, &link)
+        let screens = NSScreen.screens
+        let screensID = screens.index(of: window.screen!)
+        CVDisplayLinkCreateWithCGDisplay(CGDirectDisplayID(screensID!), &link)
         CVDisplayLinkSetOutputCallback(link!, displayLinkOutputCallback, UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque()))
         return link!
     }
@@ -193,7 +194,7 @@ class LifeView : NSView {
         )
         
         let ortho = makeOrthoMatrix(left: -unitDimensions.x, right: unitDimensions.x, bottom: -unitDimensions.y, top: unitDimensions.y, near: -1.0, far: 1.0)
-        self.uniforms.mvpMatrix = ortho.cmatrix
+        self.uniforms.mvpMatrix = ortho
         self.uniforms.gridDimensions.x = UInt32(unitDimensions.x * gridSpacing)
         self.uniforms.gridDimensions.y = UInt32(unitDimensions.y * gridSpacing)
         self.numCells = Int(self.uniforms.gridDimensions.x * self.uniforms.gridDimensions.y)
@@ -206,7 +207,7 @@ class LifeView : NSView {
         }
         else {
             memcpy(self.vertexBufferB!.contents(), self.cpuCellsBuffer, memSize)
-            self.vertexBufferB!.didModifyRange(NSMakeRange(0, memSize))
+            self.vertexBufferB!.didModifyRange(0..<memSize)
         }
 
         // random fill
@@ -222,7 +223,7 @@ class LifeView : NSView {
         }
         else {
             memcpy(vertexBufferA!.contents(), self.cpuCellsBuffer, memSize)
-            self.vertexBufferA!.didModifyRange(NSMakeRange(0, memSize))
+            self.vertexBufferA!.didModifyRange(0..<memSize)
         }
 
         self.drawingA = true
@@ -252,29 +253,29 @@ class LifeView : NSView {
             renderPassDescriptor.colorAttachments[0].loadAction = .clear
 
             let commandBuffer = commandQueue.makeCommandBuffer()
-            let encoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+            let encoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
 
             if (self.drawingA) {
-                encoder.setVertexBuffer(self.vertexBufferA, offset: 0, at: 0)
-                encoder.setVertexBuffer(self.vertexBufferB, offset: 0, at: 1)
+                encoder?.setVertexBuffer(self.vertexBufferA, offset: 0, index: 0)
+                encoder?.setVertexBuffer(self.vertexBufferB, offset: 0, index: 1)
             }
             else {
-                encoder.setVertexBuffer(self.vertexBufferB, offset: 0, at: 0)
-                encoder.setVertexBuffer(self.vertexBufferA, offset: 0, at: 1)
+                encoder?.setVertexBuffer(self.vertexBufferB, offset: 0, index: 0)
+                encoder?.setVertexBuffer(self.vertexBufferA, offset: 0, index: 1)
             }
-            encoder.setVertexBytes(&self.uniforms, length: MemoryLayout<Uniforms>.stride, at: 2)
-            encoder.setFragmentBytes(&self.uniforms, length: MemoryLayout<Uniforms>.stride, at: 2)
+            encoder?.setVertexBytes(&self.uniforms, length: MemoryLayout<Uniforms>.stride, index: 2)
+            encoder?.setFragmentBytes(&self.uniforms, length: MemoryLayout<Uniforms>.stride, index: 2)
 
-            encoder.setRenderPipelineState(simulationPipelineState)
-            encoder.drawPrimitives(type: .point, vertexStart: 0, vertexCount: self.numCells)
+            encoder?.setRenderPipelineState(simulationPipelineState)
+            encoder?.drawPrimitives(type: .point, vertexStart: 0, vertexCount: self.numCells)
 
-            encoder.setRenderPipelineState(renderingPipelineState)
-            encoder.drawPrimitives(type: .point, vertexStart: 0, vertexCount: self.numCells)
+            encoder?.setRenderPipelineState(renderingPipelineState)
+            encoder?.drawPrimitives(type: .point, vertexStart: 0, vertexCount: self.numCells)
 
-            encoder.endEncoding()
+            encoder?.endEncoding()
 
-            commandBuffer.present(drawable)
-            commandBuffer.commit()
+            commandBuffer?.present(drawable)
+            commandBuffer?.commit()
         }
 
         self.drawingA = !self.drawingA

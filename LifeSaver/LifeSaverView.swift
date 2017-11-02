@@ -62,8 +62,8 @@ class LifeSaverView: ScreenSaverView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override class func backingStoreType() -> NSBackingStoreType {
-        return NSBackingStoreType.nonretained
+    override class func backingStoreType() -> NSWindow.BackingStoreType {
+        return NSWindow.BackingStoreType.nonretained
     }
     
     override func startAnimation() {
@@ -93,17 +93,16 @@ class LifeSaverView: ScreenSaverView {
         }
     }
     
-    override func hasConfigureSheet() -> Bool {
+    override var hasConfigureSheet: Bool {
         return true
     }
     
-    override func configureSheet() -> NSWindow? {
+    override var configureSheet: NSWindow? {
         if let controller = self.prefsWindowController {
             return controller.window
         }
         
-        self.prefsWindowController = LifeSaverPreferencesController(windowNibName: "LifeSaverPreferences")
+        self.prefsWindowController = LifeSaverPreferencesController(windowNibName: NSNib.Name(rawValue: "LifeSaverPreferences"))
         return self.prefsWindowController!.window
     }
 }
-

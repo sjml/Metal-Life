@@ -96,22 +96,24 @@ class LifeViewController: NSViewController {
             self.fgColorWell.isEnabled = false
             self.pointSizeSlider.isEnabled = false
             self.fpsMenu.isEnabled = false
+            self.defaultsButton.isEnabled = false
             self.defaults.synchronize()
         }
     }
     
-    func mouseStopped() {
+    @objc func mouseStopped() {
         NSCursor.setHiddenUntilMouseMoves(true)
         self.hidingMouse = true
     }
     
     override func flagsChanged(with event: NSEvent) {
-        if (event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .control) {
+        if (event.modifierFlags.intersection(NSEvent.ModifierFlags.deviceIndependentFlagsMask) == NSEvent.ModifierFlags.control) {
             self.controlGroup.alphaValue = 1.0
             self.bgColorWell.isEnabled = true
             self.fgColorWell.isEnabled = true
             self.pointSizeSlider.isEnabled = true
             self.fpsMenu.isEnabled = true
+            self.defaultsButton.isEnabled = true
             self.syncUI()
         }
         else {
@@ -121,6 +123,7 @@ class LifeViewController: NSViewController {
                 self.fgColorWell.isEnabled = false
                 self.pointSizeSlider.isEnabled = false
                 self.fpsMenu.isEnabled = false
+                self.defaultsButton.isEnabled = false
                 self.defaults.synchronize()
             }
         }
@@ -146,7 +149,10 @@ class LifeViewController: NSViewController {
         self.pointSizeSlider.isEnabled = false
         self.fpsMenu.isEnabled = false
         
-        eqTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self.lifeView, selector: #selector(LifeView.checkForEquilibrium), userInfo: nil, repeats: true)
+        eqTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true) {
+            _ in 
+            self.lifeView.checkForEquilibrium()
+        }
         
         self.view.window?.delegate = self
         self.view.window?.acceptsMouseMovedEvents = true
