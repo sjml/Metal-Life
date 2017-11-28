@@ -28,6 +28,10 @@ class LifeView : NSView {
     var numCells:Int = 1024
     var cpuCellsBuffer: [UInt8] = []
     var needsReset: Bool = false
+    
+    let pixelSpacing: Float = (3.0 / 128.0)
+    let gridSpacing: Float = (40.0 / 3.0)
+    var viewBounds: NSRect!
 
     required init?(coder: NSCoder) {
         if let defaultDev = MTLCreateSystemDefaultDevice() {
@@ -41,6 +45,8 @@ class LifeView : NSView {
 
         super.init(coder: coder)
         self.wantsLayer = true
+        
+        viewBounds = self.bounds
     }
 
     override init(frame: NSRect) {
@@ -51,6 +57,8 @@ class LifeView : NSView {
 
         super.init(frame: frame)
         self.wantsLayer = true
+        
+        viewBounds = self.bounds
     }
 
     deinit {
@@ -131,6 +139,7 @@ class LifeView : NSView {
     }
 
     override func viewDidEndLiveResize() {
+        viewBounds = self.bounds
         self.needsReset = true
     }
 
@@ -178,19 +187,20 @@ class LifeView : NSView {
         let change = Float(changeCount) / Float(self.numCells)
 //        NSLog("\(change * 100.0)%% change since last check.")
 
-        if change < 0.001 {
+        let liveCells = self.cpuCellsBuffer.filter({$0 > 0}).count
+//        NSLog("\(liveCells) live cells.")
+        
+        if change < 0.001 || liveCells == 0 {
             self.needsReset = true
         }
     }
 
     func resetBuffers() {
-        let pixelSpacing: Float = (3.0 / 128.0)
-        let gridSpacing: Float = (40.0 / 3.0)
-        let unitDimensions: float2 = float2(Float(self.bounds.width) * pixelSpacing, Float(self.bounds.height) * pixelSpacing) * 0.5
-        
+        let unitDimensions = float2(Float(self.viewBounds.width) * pixelSpacing, Float(self.viewBounds.height) * pixelSpacing) * 0.5
+
         (self.layer as! CAMetalLayer).drawableSize = CGSize(
-            width: self.bounds.width * self.layer!.contentsScale,
-            height: self.bounds.height * self.layer!.contentsScale
+            width: self.viewBounds.width * self.layer!.contentsScale,
+            height: self.viewBounds.height * self.layer!.contentsScale
         )
         
         let ortho = makeOrthoMatrix(left: -unitDimensions.x, right: unitDimensions.x, bottom: -unitDimensions.y, top: unitDimensions.y, near: -1.0, far: 1.0)
@@ -231,9 +241,10 @@ class LifeView : NSView {
     }
 
     func render() {
-        if (self.inLiveResize) {
-            return
-        }
+        // // removing for threading issues; purely aesthetic anyway
+        // if (self.inLiveResize) {
+        //     return
+        // }
 
         if (self.needsReset) {
             self.resetBuffers()
